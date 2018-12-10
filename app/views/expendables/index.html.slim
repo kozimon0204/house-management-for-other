@@ -1,2 +1,10 @@
-h1 Expendables#index
-p Find me in app/views/expendables/index.html.slim
+.container
+  table.table
+    thead
+      tr
+        th ID
+        th Name
+    - @expendables.each do |expendable|
+      tr
+        td #{expendable.id}
+        td #{expendable.name}

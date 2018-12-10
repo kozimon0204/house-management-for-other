@@ -1,2 +1,7 @@
-h1 ManageExpendables#index
-p Find me in app/views/manage_expendables/index.html.slim
+.container
+  .row
+    - @houses.each do |house|
+      .col-md-4.col-content
+        a href=manage_expendables_list_path(house.id)
+          .col-item
+            label #{house.name}

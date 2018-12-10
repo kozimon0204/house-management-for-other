@@ -1,2 +1,5 @@
-h1 ManageExpendables#list
-p Find me in app/views/manage_expendables/list.html.slim
+.container
+
+  / = @house_expenbales
+  - @house_expenbales.each do |house_expenbale|
+    = debug house_expenbale

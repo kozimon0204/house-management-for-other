@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  get 'manage_expendables/index'
+  get 'manage_expendables', to: 'manage_expendables#index', as: :manage_expendables
 
-  get 'manage_expendables/list'
+  get 'manage_expendables/list/:house_id', to: 'manage_expendables#list', as: :manage_expendables_list
 
   get 'manage_expendables/new'
 
   get 'manage_expendables/edit'
 
-  get 'houses/index'
+  get 'houses', to: 'houses#index', as: :houses
 
   get 'houses/list'
 
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get 'houses/edit'
 
-  get 'expendables/index'
+  get 'expendables', to: 'expendables#index', as: :expendables
 
   get 'expendables/list'
 
