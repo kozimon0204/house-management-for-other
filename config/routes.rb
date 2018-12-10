@@ -1,4 +1,28 @@
 Rails.application.routes.draw do
+  get 'manage_expendables/index'
+
+  get 'manage_expendables/list'
+
+  get 'manage_expendables/new'
+
+  get 'manage_expendables/edit'
+
+  get 'houses/index'
+
+  get 'houses/list'
+
+  get 'houses/new'
+
+  get 'houses/edit'
+
+  get 'expendables/index'
+
+  get 'expendables/list'
+
+  get 'expendables/new'
+
+  get 'expendables/edit'
+
   get 'users', to: 'users#index', as: :users
   
   # devise_for :users
