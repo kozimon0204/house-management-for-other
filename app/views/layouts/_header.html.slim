@@ -1,0 +1,15 @@
+header.header.mb-3
+  - if !user_signed_in?
+    nav
+      ul
+        / li #{link_to 'Signin with Google', user_google_omniauth_authorize_path}
+  - else
+    nav
+      ul
+        li #{link_to_unless_current 'ホーム', root_path}
+        li #{link_to 'ログアウト', logout_path}
+        li #{current_user.email}
+        / li #{link_to_unless_current 'ステータス', user_mypage_path}
+    
+    
+

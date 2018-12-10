@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+
+
+ .btn-container {
+  margin: 40px 0 60px;
+  text-align: center;
+}

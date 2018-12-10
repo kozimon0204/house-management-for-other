@@ -1,0 +1,21 @@
+
+.container
+  nav
+    ul
+      li #{link_to 'ユーザー追加', new_user_registration_path}
+  table.table
+    thead
+      tr
+        th ID
+        th Email
+        th Created_at
+        th
+    - @users.each do |user|
+      tr
+        td #{user.id}
+        td #{user.email}
+        td #{user.created_at.strftime('%Y-%m-%d %H:%M')}
+        td 
+          a href="/users/#{user.id}/edit" 編集
+          / = link_to 
+
