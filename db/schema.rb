@@ -10,10 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181210111817) do
+ActiveRecord::Schema.define(version: 20181210140922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.integer "display_number"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "expendables", force: :cascade do |t|
+    t.bigint "category_id"
+    t.integer "display_number", default: 0
+    t.integer "expendable_type", default: 0
+    t.string "name"
+    t.string "img"
+    t.string "url"
+    t.integer "price", default: 0
+    t.integer "requier_number", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_expendables_on_category_id"
+  end
+
+  create_table "house_expendables", force: :cascade do |t|
+    t.bigint "house_id"
+    t.bigint "expendable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expendable_id"], name: "index_house_expendables_on_expendable_id"
+    t.index ["house_id"], name: "index_house_expendables_on_house_id"
+  end
+
+  create_table "houses", force: :cascade do |t|
+    t.integer "display_number", default: 0
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
