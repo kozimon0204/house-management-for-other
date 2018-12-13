@@ -3,3 +3,4 @@ User.seed(:id,
     
 )
 
+# user.add_role "admin"

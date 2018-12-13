@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
+//= require font_awesome5
+//= require pnotify
 //= require_tree .

@@ -4,11 +4,20 @@ header.header.mb-3
       ul
         / li #{link_to 'Signin with Google', user_google_omniauth_authorize_path}
   - else
-    nav
-      ul
-        li #{link_to_unless_current 'ホーム', root_path}
-        li #{link_to 'ログアウト', logout_path}
-        li #{current_user.email}
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand href=root_path ホーム
+      button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNav" data-toggle="collapse" type="button" 
+        span.navbar-toggler-icon
+
+      #navbarNav.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link href=expendables_path 消耗品一覧
+
+        ul.navbar-nav
+          li.nav-item.nav-email #{current_user.email}
+          li.nav-item
+            a.nav-link href=logout_path ログアウト
         / li #{link_to_unless_current 'ステータス', user_mypage_path}
     
     

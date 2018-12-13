@@ -3,20 +3,31 @@
   .row
     .col-md-4.col-content
       a href=manage_expendables_path
-        .col-item
+        .col-item.p-3
           label 消耗品確認
+          .d-block
+            = fa_icon('clipboard-check', class: 'fa-5x')
 
   h2 その他設定
   .row
     .col-md-4.col-content
       a href=houses_path
-        .col-item
+        .col-item.p-3
           label ハウス設定
+          .d-block
+            = fa_icon('home', class: 'fa-5x')
+
     .col-md-4.col-content
       a href=expendables_path
-        .col-item
+        .col-item.p-3
           label 消耗品設定
+          .d-block
+            = fa_icon('toilet-paper', class: 'fa-5x')
+
     .col-md-4.col-content
       a href=users_path
-        .col-item
+        .col-item.p-3
           label ユーザー設定
+          .d-block
+            = fa_icon('cog', class: 'fa-5x')
+

@@ -12,10 +12,20 @@
  *
  *= require_self
  *= require_tree .
+ *= require pnotify
  */
 
  @import "bootstrap";
+ @import 'font_awesome5_webfont';
 
+// --------- container -----------
+.container {
+  min-height: 760px;
+}
+
+.container-fluid {
+  min-height: 760px;
+}
 
  .btn-container {
   margin: 40px 0 60px;
@@ -35,4 +45,38 @@
   border: 1px solid grey;
   border-radius: 10px;
 
+}
+
+.img {
+  min-height: 150px;
+  max-height: 200px;
+
+  width: auto;
+}
+
+// --------- nav -----------
+.nav-email {
+  line-height: 40px;
+}
+
+// --------- category -----------
+.category-menu-btn {
+  font-size: 100%;
+}
+
+// 横スクロール
+.nav-tabs-wrap {
+  overflow-y: none;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.nav-tabs-wrap .nav {
+  display: inline-block;
+  width: 100%;
+}
+
+.nav-tabs-wrap .nav > li {
+  display: inline-block;
+  float: none;
 }

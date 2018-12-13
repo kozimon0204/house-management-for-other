@@ -1,2 +1,36 @@
-h1 Expendables#new
-p Find me in app/views/expendables/new.html.slim
+.container
+  nav.text-left.mb-3
+    a.btn.btn-primary href=expendables_path 戻る
+
+  = form_for(@expendable, url: create_expendables_path, method: :post,  html: {id: '', class: ''}) do |f|
+    = f.hidden_field :id
+
+    .form-group
+      = f.label :category_id
+      = f.select :category_id, @categories.map { |i| [i.name, i.id] }, {}, class: 'custom-select'
+
+    .form-group
+      = f.label :display_number
+      = f.text_field :display_number, class: 'form-control'
+
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control', required: true
+
+    .form-group
+      = f.label :img
+      = f.text_field :img, class: 'form-control'
+
+    .form-group
+      = f.label :requier_number
+      = f.text_field :requier_number, class: 'form-control'
+
+    .form-group
+      = f.label :url
+      = f.text_field :url, class: 'form-control'
+   
+    .form-group.text-center
+      = f.submit '登録', class: 'btn btn-lg btn-primary'
+
+
+  

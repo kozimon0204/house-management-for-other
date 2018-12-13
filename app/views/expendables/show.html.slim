@@ -1,0 +1,33 @@
+.container
+  nav.navbar.mb-3
+    a.btn.btn-primary href=expendables_path 一覧
+    a.btn.btn-primary href=edit_expendable_path(@expendable.id) 編集
+
+  table.table
+    tr
+      th ID
+      td #{@expendable.id}
+    tr
+      th カテゴリ
+      td #{@expendable.category.name}
+    tr
+      th 表示順
+      td #{@expendable.display_number}
+    tr
+      th 名前
+      td #{@expendable.name}
+    tr
+      th 画像
+      td 
+        img.img.img-thumbnail src="#{@expendable.img}" alt="#{@expendable.name}"
+    tr
+      th 商品URL
+      td
+        a href=@expendable.url 商品詳細
+    tr
+      th 必要数
+      td #{@expendable.requier_number}
+      
+  
+
+  

@@ -1,10 +1,22 @@
 .container
+  nav.navbar.mb-3
+    a.btn.btn-primary href=root_path ホーム
+    a.btn.btn-success href=new_expendable_path 新規
+    
   table.table
     thead
       tr
         th ID
-        th Name
+        th カテゴリ
+        th 名前
+        th 画像
+        th
     - @expendables.each do |expendable|
       tr
         td #{expendable.id}
+        td #{expendable.category.name}
         td #{expendable.name}
+        td
+          img.img.img-thumbnail src="#{expendable.img}" alt="#{expendable.name}"/
+        td
+          a.btn.btn-primary href=expendable_path(expendable.id) 詳細

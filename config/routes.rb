@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get 'manage_expendables', to: 'manage_expendables#index', as: :manage_expendables
+  get 'manage_expendables', to: 'manage_expendables#list', as: :manage_expendables
 
-  get 'manage_expendables/list/:house_id', to: 'manage_expendables#list', as: :manage_expendables_list
+  get 'manage_expendables/:house_id', to: 'manage_expendables#category', as: :manage_expendables_category
+  get 'manage_expendables/:house_id/:category_id', to: 'manage_expendables#category_w', as: :manage_expendables_category_w
 
-  get 'manage_expendables/new'
+  get 'manage_expendables_new/:house_id', to: 'manage_expendables#new', as: :manage_expendables_new
+  get 'manage_expendables_post/:house_id', to: 'manage_expendables#post', as: :manage_expendables_post
 
   get 'manage_expendables/edit'
 
@@ -15,13 +17,18 @@ Rails.application.routes.draw do
 
   get 'houses/edit'
 
-  get 'expendables', to: 'expendables#index', as: :expendables
 
-  get 'expendables/list'
+  # 管理系
+  # get 'expendables', to: 'expendables#index', as: :expendables
+  # get 'expendables/:id', to: 'expendables#show', as: :expendables_edit
+  post 'expendables/:id', to: 'expendables#update', as: :update_expendables
+  post 'expendables', to: 'expendables#create', as: :create_expendables
+  resources :expendables
 
-  get 'expendables/new'
+  # get 'expendables/list'
 
-  get 'expendables/edit'
+  # get 'expendables/new'
+
 
   get 'users', to: 'users#index', as: :users
   

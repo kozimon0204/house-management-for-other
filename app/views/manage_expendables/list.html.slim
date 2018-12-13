@@ -1,5 +1,9 @@
 .container
+  .row
+    - @houses.each do |house|
+      .col-md-4.col-content
+        a href=manage_expendables_category_path(house.id)
+          .col-item.p-3
+            label #{house.name}
 
-  / = @house_expenbales
-  - @house_expenbales.each do |house_expenbale|
-    = debug house_expenbale
+            img.img.img-thumbnail.d-block src="#{house.img}" alt="#{house.name}"/

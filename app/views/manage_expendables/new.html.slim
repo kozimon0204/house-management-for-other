@@ -1,2 +1,19 @@
-h1 ManageExpendables#new
-p Find me in app/views/manage_expendables/new.html.slim
+.container
+
+  table.table
+    tr
+      th No
+      th カテゴリ
+      th 名前
+      th 数
+      th
+
+    - if @expendable_choices.present?
+      - @expendable_choices.each do |expendable|
+        tr
+          td
+          td
+          td
+          td 
+  nav.text-center
+    a.btn.btn-primary href="/manage_expendables_post/#{@house_id}" 連携する

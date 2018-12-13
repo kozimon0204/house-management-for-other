@@ -1,2 +1,27 @@
-h1 Expendables#edit
-p Find me in app/views/expendables/edit.html.slim
+.container
+  nav.text-left.mb-3
+    a.btn.btn-primary href=expendable_path 戻る
+    
+  - if @expendable.present?
+    = form_for(@expendable, url: update_expendables_path(@expendable.id), method: :patch,  html: {id: '', class: ''}) do |f|
+      = f.hidden_field :id
+      .form-group
+        = f.label :display_number
+        = f.text_field :display_number, class: 'form-control'
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
+      .form-group
+        = f.label :img
+        = f.text_field :img, class: 'form-control'
+      .form-group
+        = f.label :requier_number
+        = f.text_field :requier_number, class: 'form-control'
+      .form-group
+        = f.label :url
+        = f.text_field :url, class: 'form-control'
+      .form-group.text-center
+        = f.submit '更新', class: 'btn btn-lg btn-primary'
+
+
+  

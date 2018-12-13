@@ -1,0 +1,54 @@
+.container-fluid
+  .row
+    .col-3
+      nav.mb-3
+        ul.nav.nav-tabs.d-block
+          - if @categories.present?
+            - @categories.each do |category|
+              li.d-block.nav-item.mb-2
+                - if @category_id == category.id
+                  a.btn.btn-lg.category-menu-btn.text-truncate.nav-link.active.bg-info.text-light href=manage_expendables_category_w_path(@house_id, category.id) #{category.name}
+                - else
+                  a.btn.btn-lg.category-menu-btn.text-truncate.nav-link.active href=manage_expendables_category_w_path(@house_id, category.id) #{category.name}
+    .col-9
+      nav.mb-3.text-right
+        a.btn.btn-lg.btn-success href="/manage_expendables_new/#{@house_id}" 選択リスト
+      - if @expendables.present?
+        .row
+          - @expendables.each do |expendable|
+            .col-4.text-center
+              .card.p-2.m-2 onclick="addToOrder(#{@house_id}, #{expendable.id}, '#{expendable.name}')"
+                label #{expendable.name}
+                img.img.img-thumbnail.d-block src="#{expendable.img}" alt="#{expendable.name}"/
+
+      - else
+        dev 消耗品はありません
+
+
+javascript:
+  
+  function addToOrder(house_id, expendable_id, expendable_name) {
+    console.log('aaa');
+    console.log(expendable_id);
+
+    $.ajax({
+      type: 'POST',
+      url: '/api/manage_expendables/add',
+      dataType: 'json',
+      data: { manage_expendable: {
+        'house_id': house_id,
+        'expendable_id': expendable_id
+        }
+      },
+      success: function (data) {
+        console.log(data);
+        console.log('ok')
+        notifySuccess('リストに追加（未実装）', expendable_name)
+
+      },
+      error: function () {
+        console.log('ng')
+      }
+    });
+  }
+

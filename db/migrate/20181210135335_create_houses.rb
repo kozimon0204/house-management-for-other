@@ -4,6 +4,9 @@ class CreateHouses < ActiveRecord::Migration[5.1]
       t.integer :display_number, default: 0
       t.string :name
 
+      t.string :img
+      
+
       t.timestamps
     end
   end
