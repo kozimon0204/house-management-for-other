@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20181213150955) do
   create_table "expendable_choices", force: :cascade do |t|
     t.bigint "house_id"
     t.bigint "expendable_id"
-    t.integer "status"
-    t.integer "amount"
+    t.integer "status", default: 0
+    t.integer "amount", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["expendable_id"], name: "index_expendable_choices_on_expendable_id"

@@ -9,11 +9,12 @@
       th
 
     - if @expendable_choices.present?
-      - @expendable_choices.each do |expendable|
+      - @expendable_choices.each_with_index do |expendable, index|
         tr
-          td
-          td
-          td
+          td #{index + 1}
+          td #{expendable.expendable.category.name}
+          td #{expendable.expendable.name}
+          td #{expendable.amount}
           td 
   nav.text-center
     a.btn.btn-primary href="/manage_expendables_post/#{@house_id}" 連携する

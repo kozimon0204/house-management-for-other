@@ -35,7 +35,7 @@ javascript:
       type: 'POST',
       url: '/api/manage_expendables/add',
       dataType: 'json',
-      data: { manage_expendable: {
+      data: { expendable: {
         'house_id': house_id,
         'expendable_id': expendable_id
         }
@@ -43,7 +43,7 @@ javascript:
       success: function (data) {
         console.log(data);
         console.log('ok')
-        notifySuccess('リストに追加（未実装）', expendable_name)
+        notifySuccess('リストに追加', expendable_name)
 
       },
       error: function () {
