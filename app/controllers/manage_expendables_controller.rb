@@ -40,7 +40,10 @@ class ManageExpendablesController < ApplicationController
   end
   
   def post
-    ManageExpendableMailer.send_confirm_to_user(current_user).deliver
+    house = House.find(params[:house_id])
+    expendable_choices = ExpendableChoice.where(house_id: house.id, status: ExpendableChoice.statuses[:picking])
+
+    ManageExpendableMailer.send_choice(user: current_user, house: house, expendable_choices: expendable_choices).deliver
 
     redirect_to root_path
   end
