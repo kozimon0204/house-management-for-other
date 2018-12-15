@@ -8,9 +8,10 @@
       strong #{@house.name}
       label の消耗品管理
     .col.text-right
-      a.btn.btn-secondary href="/manage_expendables_post/#{@house.id}"
-        | メール送信
-        = fa_icon('chevron-right', class: 'fa-fw')
+      - if @expendable_choices.present?
+        a.btn.btn-secondary href="/manage_expendables_post/#{@house.id}"
+          | メール送信
+          = fa_icon('chevron-right', class: 'fa-fw')
   table.table
     tr
       th No
@@ -22,11 +23,11 @@
     - if @expendable_choices.present?
       - @expendable_choices.each_with_index do |expendable, index|
         tr
-          td.td-min.text-center #{index + 1}
-          td #{expendable.expendable.category.name}
-          td #{expendable.expendable.name}
-          td.td-min.text-center id="choice-#{expendable.id}" #{expendable.amount}
-          td.td-min
+          td.align-middle.td-min.text-center #{index + 1}
+          td.align-middle #{expendable.expendable.category.name}
+          td.align-middle #{expendable.expendable.name}
+          td.align-middle.td-min.text-center id="choice-#{expendable.id}" #{expendable.amount}
+          td.align-middle.td-min
             span onclick="plus(#{expendable.id})"
               = fa_icon('plus-square', class: 'fa-3x text-secondary')
             span onclick="minus(#{expendable.id}, #{expendable.expendable.id})"
