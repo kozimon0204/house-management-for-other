@@ -42,9 +42,10 @@ class ManageExpendablesController < ApplicationController
   def post
     house = House.find(params[:house_id])
     expendable_choices = ExpendableChoice.where(house_id: house.id, status: ExpendableChoice.statuses[:picking])
+    zero_amount_expendable_choices = expendable_choices.where(amount: 0)
+    zero_amount_expendable_choices.destroy_all
 
     ManageExpendableMailer.send_choice(user: current_user, house: house, expendable_choices: expendable_choices).deliver
-
     expendable_choices.update_all(status: ExpendableChoice.statuses[:ordered])
 
     redirect_to root_path
