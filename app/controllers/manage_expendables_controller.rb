@@ -41,7 +41,7 @@ class ManageExpendablesController < ApplicationController
   
   def post
     house = House.find(params[:house_id])
-    expendable_choices = ExpendableChoice.where(house_id: @house_id, status: ExpendableChoice.statuses[:picking])
+    expendable_choices = ExpendableChoice.where(house_id: house.id, status: ExpendableChoice.statuses[:picking])
 
     ManageExpendableMailer.send_choice(user: current_user, house: house, expendable_choices: expendable_choices).deliver
 
