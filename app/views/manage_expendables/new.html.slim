@@ -11,10 +11,62 @@
     - if @expendable_choices.present?
       - @expendable_choices.each_with_index do |expendable, index|
         tr
-          td #{index + 1}
+          td.td-min.text-center #{index + 1}
           td #{expendable.expendable.category.name}
           td #{expendable.expendable.name}
-          td #{expendable.amount}
-          td 
+          td.td-min.text-center id="choice-#{expendable.id}" #{expendable.amount}
+          td.td-min
+            span onclick="plus(#{expendable.id})"
+              = fa_icon('plus-square', class: 'fa-2x text-secondary')
+            span onclick="minus(#{expendable.id}, #{expendable.expendable.id})"
+              = fa_icon('minus-square', class: 'fa-2x text-secondary ml-3')
+            
   nav.text-center
     a.btn.btn-primary href="/manage_expendables_post/#{@house_id}" 連携する
+
+
+javascript:
+  function plus(choiceId, expendableId) {
+    
+    $.ajax({
+      type: 'PUT',
+      url: '/api/manage_expendables/plus',
+      dataType: 'json',
+      data: { expendable_choice: {
+        'id': choiceId
+        }
+      },
+      success: function (data) {
+        choiceElm = document.getElementById('choice-' + choiceId);
+        choiceElm.innerText = parseInt(choiceElm.innerText) + 1;
+
+      },
+      error: function () {
+        console.log('ng')
+
+      }
+    });
+  }
+
+
+  function minus(choiceId, expendableId) {
+
+    $.ajax({
+      type: 'PUT',
+      url: '/api/manage_expendables/minus',
+      dataType: 'json',
+      data: { expendable_choice: {
+        'id': choiceId
+        }
+      },
+      success: function (data) {
+        choiceElm = document.getElementById('choice-' + choiceId);
+        choiceElm.innerText = parseInt(choiceElm.innerText) - 1;
+
+      },
+      error: function () {
+        console.log('ng')
+
+      }
+    });
+  }
