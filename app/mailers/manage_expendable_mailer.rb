@@ -10,10 +10,10 @@ class ManageExpendableMailer < ApplicationMailer
     end
   end
 
-  def send_choice(user: , house: , manage_expendable_choices:)
+  def send_choice(user: , house: , expendable_choices:)
     @user = user
     @house = house
-    @manage_expendable_choices = manage_expendable_choices
+    @expendable_choices = expendable_choices
 
     mail(
       subject: "消耗品発注リスト【#{@house.name}】", #メールのタイトル,
