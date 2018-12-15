@@ -1,0 +1,8 @@
+#{@house.name} の消耗品リスト
+
+- @expendable_choices.each_with_index do |choice, index|
+  No. #{index}
+  #{choice.expendable.name} x #{choice.amount}
+  
+  hr/
+

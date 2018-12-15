@@ -19,7 +19,7 @@ class ManageExpendableMailer < ApplicationMailer
       subject: "消耗品発注リスト【#{@house.name}】", #メールのタイトル,
       to: @user.email #宛先
     ) do |format|
-      format.text
+      format.html
     end
   end
 
