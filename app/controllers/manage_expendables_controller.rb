@@ -40,6 +40,7 @@ class ManageExpendablesController < ApplicationController
   end
   
   def post
+    ManageExpendableMailer.send_confirm_to_user(current_user).deliver
 
     redirect_to root_path
   end
