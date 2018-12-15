@@ -10,8 +10,8 @@ class ManageExpendablesController < ApplicationController
   # [GET] /manage_expendables/:house_id
   # 
   def category
-    @house_id = params[:house_id]
-    @house_expenbales = HouseExpendable.where(house_id: params[:house_id])
+    @house = House.find(params[:house_id])
+    @house_expenbales = HouseExpendable.where(house_id: @house.id)
 
     @categories = Category.all
     @expendables = Expendable.where(category_id: 1)
@@ -24,17 +24,17 @@ class ManageExpendablesController < ApplicationController
   # [GET] /manage_expendables/:house_id/:category_id
   # 
   def category_w
-    @house_id = params[:house_id]
+    @house = House.find(params[:house_id])
     @categories = Category.all
-    @expendables = Expendable.where(category_id: params[:category_id])
+    @expendables = Expendable.where(category_id: params[:category_id].to_i)
     @category_id = params[:category_id].to_i
 
     render "manage_expendables/category"
   end
 
   def new
-    @house_id = params[:house_id]
-    @expendable_choices = ExpendableChoice.where(house_id: @house_id, status: ExpendableChoice.statuses[:picking])
+    @house = House.find(params[:house_id])
+    @expendable_choices = ExpendableChoice.where(house_id: @house.id, status: ExpendableChoice.statuses[:picking])
 
     
   end

@@ -1,5 +1,16 @@
 .container
-
+  .row.mb-3
+    .col.text-left
+      a.btn.btn-secondary href="/manage_expendables/#{@house.id}"
+        = fa_icon('chevron-left', class: 'fa-fw')
+        | 戻る
+    .col.text-center.category-label-house
+      strong #{@house.name}
+      label の消耗品管理
+    .col.text-right
+      a.btn.btn-secondary href="/manage_expendables_post/#{@house.id}"
+        | メール送信
+        = fa_icon('chevron-right', class: 'fa-fw')
   table.table
     tr
       th No
@@ -17,14 +28,10 @@
           td.td-min.text-center id="choice-#{expendable.id}" #{expendable.amount}
           td.td-min
             span onclick="plus(#{expendable.id})"
-              = fa_icon('plus-square', class: 'fa-2x text-secondary')
+              = fa_icon('plus-square', class: 'fa-3x text-secondary')
             span onclick="minus(#{expendable.id}, #{expendable.expendable.id})"
-              = fa_icon('minus-square', class: 'fa-2x text-secondary ml-3')
+              = fa_icon('minus-square', class: 'fa-3x text-secondary ml-3')
             
-  nav.text-center
-    a.btn.btn-primary href="/manage_expendables_post/#{@house_id}" 連携する
-
-
 javascript:
   function plus(choiceId, expendableId) {
     
