@@ -1,5 +1,6 @@
 User.seed(:id,
-    {email: 'admin@example.com', password: 'password', password_confirmation: 'password'}
+    {email: 'admin@example.com', password: 'password', password_confirmation: 'password'},
+    {email: 'monkozi0204@gmail.com', password: 'password', password_confirmation: 'password'}
     
 )
 
