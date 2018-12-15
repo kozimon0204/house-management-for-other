@@ -10,10 +10,20 @@ module Api
     # [POST] /api/manage_expendables/add
     # 
     def add
-      expendableChoice = ExpendableChoice.new(expendable_params)
-      expendableChoice.status = ExpendableChoice.statuses[:picking]
-      expendableChoice.amount = 1
-      expendableChoice.save!
+      expendableChoice = ExpendableChoice.find_by(house_id: expendable_params[:house_id], expendable_id: expendable_params[:expendable_id], status: ExpendableChoice.statuses[:picking])
+      if expendableChoice.present?
+        expendableChoice.amount += 1
+        expendableChoice.save!
+        
+      else
+        expendableChoice = ExpendableChoice.new(expendable_params)
+        expendableChoice.status = ExpendableChoice.statuses[:picking]
+        expendableChoice.amount = 1
+        expendableChoice.save!
+
+      end 
+
+      
 
       render json: '', status: 204
     end
