@@ -45,6 +45,8 @@ class ManageExpendablesController < ApplicationController
 
     ManageExpendableMailer.send_choice(user: current_user, house: house, expendable_choices: expendable_choices).deliver
 
+    expendable_choices.update_all(status: ExpendableChoice.statuses[:ordered])
+
     redirect_to root_path
   end
 
