@@ -1,0 +1,8 @@
+<%= @house.name %> の消耗品リスト
+
+<%= @expendable_choices.each do |choice| %>
+  No. <% index %>
+    <% choice.expendable.name %> x <% choice.amount %>
+  
+
+<% end %>
