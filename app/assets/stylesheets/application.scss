@@ -18,6 +18,10 @@
  @import "bootstrap";
  @import 'font_awesome5_webfont';
 
+body {
+  background: #eee image-url("jpg/anima_wallpaper.jpg");
+}
+
 // --------- container -----------
 .container {
   min-height: 760px;
@@ -44,7 +48,7 @@
   width: 100%;
   border: 1px solid grey;
   border-radius: 10px;
-
+  background-color: #eee;
 }
 
 .img {
